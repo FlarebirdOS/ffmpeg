@@ -1,6 +1,6 @@
 pkgname=ffmpeg
 pkgver=8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete solution to record, convert and stream audio and video"
 arch=('x86_64')
 url="https://ffmpeg.org"
@@ -46,6 +46,7 @@ depends=(
     'opencore-amr'
     'openjpeg'
     'opus'
+    'pipewire-jack'
     'rav1e'
     'sdl2'
     'speex'
@@ -104,6 +105,7 @@ build() {
         --enable-libfribidi
         --enable-libglslang
         --enable-libharfbuzz
+        --enable-libjack
         --enable-libjxl
         --enable-libmp3lame
         --enable-libopencore_amrnb
