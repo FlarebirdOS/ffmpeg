@@ -1,6 +1,6 @@
 pkgname=ffmpeg
-pkgver=8.0
-pkgrel=3
+pkgver=8.0.1
+pkgrel=4
 pkgdesc="Complete solution to record, convert and stream audio and video"
 arch=('x86_64')
 url="https://ffmpeg.org"
@@ -29,6 +29,7 @@ depends=(
     'libdrm'
     'libdvdnav'
     'libdvdread'
+    'libfdk-aac'
     'libglvnd'
     'libiec61883'
     'libjxl'
@@ -89,10 +90,10 @@ makedepends=(
     'opencl-headers'
     'vulkan-headers'
 )
-source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=a4044e04486d1136022498891088a90baf5b2775
+source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=894da5ca7d742e4429ffb2af534fcda0103ef593
     0001-Add-av_stream_get_first_dts-for-Chromium.patch
     0001-unbreak-glslang-build.patch)
-sha256sums=(3c7a424271b300ba626ca1d75f3bf203a39ed3b9003f0faaf80067e1278fc758
+sha256sums=(7c4b9732bfec70ac18f610629beb2517815b2633d6eff493468615d2285d7569
     f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40
     77ea85385f8eafd1f91206a8a1e0523c75186d45f9565ab1ac1921a23397bc91)
 
@@ -189,6 +190,8 @@ build() {
         --enable-vapoursynth
         --enable-version3
         --enable-vulkan
+        --enable-nonfree
+        --enable-libfdk-aac
         --docdir=/usr/share/doc/${pkgname}-${pkgver}
         --cc="${CHOST}-gcc"
         --cxx="${CHOST}-g++"
